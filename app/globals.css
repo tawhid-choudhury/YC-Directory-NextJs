@@ -3,7 +3,20 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary: #ff00aa;
+  --color-primary: #ee2b69;
+  --color-primary-100: #ffe8f0;
+
+  --color-secondary: #fbe843;
+
+  --color-black-100: #333333;
+  --color-black-200: #141413;
+  --color-black-300: #7d8087;
+
+  --color-white-100: #f7f7f7;
+
+  --shadow-100: 2px 2px 0px 0px rgb(0, 0, 0);
+  --shadow-200: 2px 2px 0px 2px rgb(0, 0, 0);
+  --shadow-300: 2px 2px 0px 2px rgb(238, 43, 105);
 }
 
 @theme inline {
@@ -33,8 +46,8 @@
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
+  /* --color-secondary-foreground: var(--secondary-foreground); */
+  /* --color-secondary: var(--secondary); */
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -46,11 +59,58 @@
 }
 
 @layer utilities {
+  /* custom raw CSS utility — no @apply */
+  .pattern {
+    background-image: linear-gradient(
+      to right,
+      transparent 49.5%,
+      rgba(251, 232, 67, 0.2) 49.5%,
+      rgba(251, 232, 67, 0.6) 50.5%,
+      transparent 50.5%
+    );
+    background-size: 5% 100%;
+    background-position: center;
+    background-repeat: repeat-x;
+  }
+}
+
+@layer utilities {
   .heading {
     @apply uppercase bg-gray-900 flex items-center justify-center text-center text-white px-6 py-6 font-extrabold text-4xl rounded
            sm:text-5xl sm:leading-tight 
            lg:text-6xl lg:leading-tight
            font-work-sans;
+  }
+  .text-30-extrabold {
+    @apply text-[30px] font-extrabold text-white;
+  }
+
+  .text-30-bold {
+    @apply text-[30px] font-bold text-black;
+  }
+
+  .text-30-semibold {
+    @apply font-semibold text-[30px] text-black;
+  }
+
+  .text-26-semibold {
+    @apply font-semibold text-[26px] text-black;
+  }
+
+  .text-24-black {
+    @apply text-[24px] font-black text-black;
+  }
+
+  .text-20-medium {
+    @apply font-medium text-[20px] text-black;
+  }
+
+  .text-16-medium {
+    @apply font-medium text-[16px] text-black;
+  }
+
+  .text-14-normal {
+    @apply font-normal text-sm text-white-100/80;
   }
 
   .pink_container {
@@ -71,17 +131,36 @@
            lg:text-4xl lg:leading-tight
            font-work-sans;
   }
-  .pattern {
-    background-image: linear-gradient(
-      to right,
-      transparent 49.5%,
-      rgba(251, 232, 67, 0.2) 49.5%,
-      rgba(251, 232, 67, 0.6) 50.5%,
-      transparent 50.5%
-    );
-    background-size: 5% 100%;
-    background-position: center;
-    background-repeat: repeat-x;
+  .section_container {
+    @apply px-6 py-10 max-w-7xl mx-auto;
+  }
+  .text-30-semibold {
+    @apply text-2xl font-semibold text-gray-800 text-center mb-6;
+  }
+  .card_grid {
+    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .startup-card {
+    @apply bg-white  border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
+  }
+  .startup-card_date {
+    @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full group-hover:bg-white-100;
+  }
+
+  .startup-card_desc {
+    @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
+  }
+  .startup-card_img {
+    @apply w-full h-[164px] rounded-[10px] object-cover;
+  }
+  .startup-card_btn {
+    @apply rounded-full bg-black-200 font-medium text-[16px] text-white px-5 py-3;
+  }
+  .startup-card_skeleton {
+    @apply w-full h-96 rounded-[22px] bg-zinc-400;
   }
 }
 
