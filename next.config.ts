@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    ppr: true,
+    after: true,
+  },
 };
 
 export default nextConfig;
